@@ -12,8 +12,8 @@ using PeopleActz.Infrastructure.Context;
 namespace PeopleActz.Infrastructure.Migrations
 {
     [DbContext(typeof(PeopleActzDbContext))]
-    [Migration("20220907233843_initial")]
-    partial class initial
+    [Migration("20220909175751_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -53,15 +53,15 @@ namespace PeopleActz.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "7957f0fb-fc9a-491a-8a74-5440d820614a",
-                            ConcurrencyStamp = "e19f6276-5ced-445f-9cdc-74e2626620ce",
+                            Id = "970eb166-8e4b-4052-a71d-51542d32e718",
+                            ConcurrencyStamp = "30082872-4ff4-463b-8aaa-0d984e50272f",
                             Name = "AppUser",
                             NormalizedName = "APPUSER"
                         },
                         new
                         {
-                            Id = "f8ca3446-c49c-4543-b023-eb5b24f9bb34",
-                            ConcurrencyStamp = "2939f314-dd12-4c48-9b3f-1b32592a4875",
+                            Id = "e476b24d-cf84-481d-bfba-6129a6d77b2b",
+                            ConcurrencyStamp = "3155a72b-e1b7-4d55-a24b-f5616c572785",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         });
@@ -215,6 +215,10 @@ namespace PeopleActz.Infrastructure.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<string>("PostId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
@@ -235,7 +239,31 @@ namespace PeopleActz.Infrastructure.Migrations
                         .HasDatabaseName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
+                    b.HasIndex("PostId");
+
                     b.ToTable("AspNetUsers", (string)null);
+                });
+
+            modelBuilder.Entity("PeopleActz.Domain.Entities.Models.Post", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Body")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Posts");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -287,6 +315,17 @@ namespace PeopleActz.Infrastructure.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("PeopleActz.Domain.Entities.Models.AppUser", b =>
+                {
+                    b.HasOne("PeopleActz.Domain.Entities.Models.Post", "Post")
+                        .WithMany()
+                        .HasForeignKey("PostId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Post");
                 });
 #pragma warning restore 612, 618
         }

@@ -29,12 +29,12 @@ namespace PeopleActz.Application.Implementation.ServiceManagers
         {
             var users = await _userManager.Users.ToListAsync();
             var payload = _mapper.Map<IEnumerable<AppUser>>(users);
-
+            
 
             return new Result<IEnumerable<UserResponse>>
             {
                 IsSuccessful = true,
-                Payload = payload
+                Payload = _mapper.Map<UserResponse>(payload)
             };
         }
 

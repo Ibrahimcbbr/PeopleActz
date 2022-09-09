@@ -9,5 +9,6 @@ namespace PeopleActz.Domain.Entities.Models
 {
     public class AppUser:IdentityUser
     {
+        public Post Post { get; set; }
     }
 }

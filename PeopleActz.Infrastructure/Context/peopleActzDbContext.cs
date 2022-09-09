@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using PeopleActz.Domain.Entities.Models;
 using PeopleActz.Infrastructure.Utils.Configuration;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace PeopleActz.Infrastructure.Context
 {
-    public class PeopleActzDbContext : IdentityDbContext
+    public class PeopleActzDbContext : IdentityDbContext<AppUser>
     {
         public PeopleActzDbContext(DbContextOptions options) : base(options)
         {

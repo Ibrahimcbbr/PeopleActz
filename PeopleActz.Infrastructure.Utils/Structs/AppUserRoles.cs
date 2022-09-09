@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PeopleActz.Infrastructure.Utils.Structs
 {
-    public struct AppUserRoles
+    public class AppUserRoles
     {
         public const string AppUser = "AppUser";
         public const string Administrator = "Administrator";

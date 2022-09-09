@@ -7,6 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.8">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -20,6 +22,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\PeopleActz.Application.Helpers\PeopleActz.Application.Helpers.csproj" />
+    <ProjectReference Include="..\PeopleActz.Application.Interfaces\PeopleActz.Application.Interfaces.csproj" />
+    <ProjectReference Include="..\PeopleActz.Application\PeopleActz.Application.csproj" />
     <ProjectReference Include="..\PeopleActz.Infrastructure\PeopleActz.Infrastructure.csproj" />
   </ItemGroup>
 

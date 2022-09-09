@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PeopleActz.Domain.Entities.Models
 {
-    public class AppUser:IdentityUser<Guid>
+    public class AppUser:IdentityUser
     {
     }
 }

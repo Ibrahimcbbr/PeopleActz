@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PeopleActz.Application.DTOs.Responses.Common
 {
-    public class NoContentResult
+    public class NoContentResponse
     {
     }
 }

@@ -12,8 +12,8 @@ using PeopleActz.Infrastructure.Context;
 namespace PeopleActz.Infrastructure.Migrations
 {
     [DbContext(typeof(PeopleActzDbContext))]
-    [Migration("20220909175751_Initial")]
-    partial class Initial
+    [Migration("20220912212742_mig1")]
+    partial class mig1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -53,15 +53,15 @@ namespace PeopleActz.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "970eb166-8e4b-4052-a71d-51542d32e718",
-                            ConcurrencyStamp = "30082872-4ff4-463b-8aaa-0d984e50272f",
+                            Id = "a0da8619-da2a-4bfe-8733-0b03a1f28d55",
+                            ConcurrencyStamp = "489e846d-eb84-443a-b6d6-55270ea99cf8",
                             Name = "AppUser",
                             NormalizedName = "APPUSER"
                         },
                         new
                         {
-                            Id = "e476b24d-cf84-481d-bfba-6129a6d77b2b",
-                            ConcurrencyStamp = "3155a72b-e1b7-4d55-a24b-f5616c572785",
+                            Id = "af185661-a42a-4d6f-b3c1-b79e6259d60f",
+                            ConcurrencyStamp = "0fab7f25-debb-4c91-86ce-053051d6ddad",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         });
@@ -216,7 +216,6 @@ namespace PeopleActz.Infrastructure.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("PostId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("SecurityStamp")
@@ -244,9 +243,36 @@ namespace PeopleActz.Infrastructure.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
+            modelBuilder.Entity("PeopleActz.Domain.Entities.Models.Comment", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Body")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PostId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PostId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Comment");
+                });
+
             modelBuilder.Entity("PeopleActz.Domain.Entities.Models.Post", b =>
                 {
                     b.Property<string>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Body")
@@ -258,6 +284,10 @@ namespace PeopleActz.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -321,11 +351,38 @@ namespace PeopleActz.Infrastructure.Migrations
                 {
                     b.HasOne("PeopleActz.Domain.Entities.Models.Post", "Post")
                         .WithMany()
+                        .HasForeignKey("PostId");
+
+                    b.Navigation("Post");
+                });
+
+            modelBuilder.Entity("PeopleActz.Domain.Entities.Models.Comment", b =>
+                {
+                    b.HasOne("PeopleActz.Domain.Entities.Models.Post", "Post")
+                        .WithMany("Comments")
                         .HasForeignKey("PostId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("PeopleActz.Domain.Entities.Models.AppUser", "User")
+                        .WithMany("Comments")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Post");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("PeopleActz.Domain.Entities.Models.AppUser", b =>
+                {
+                    b.Navigation("Comments");
+                });
+
+            modelBuilder.Entity("PeopleActz.Domain.Entities.Models.Post", b =>
+                {
+                    b.Navigation("Comments");
                 });
 #pragma warning restore 612, 618
         }

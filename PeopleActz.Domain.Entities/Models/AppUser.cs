@@ -7,8 +7,11 @@ using System.Threading.Tasks;
 
 namespace PeopleActz.Domain.Entities.Models
 {
-    public class AppUser:IdentityUser
+    public class AppUser : IdentityUser, IBaseEntity
     {
-        public Post Post { get; set; }
+        
+        public Post? Post { get; set; }
+        public IEnumerable<Comment>? Comments { get; set; }
+       
     }
 }

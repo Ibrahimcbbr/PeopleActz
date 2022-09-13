@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PeopleActz.Infrastructure.Context;
 
@@ -11,9 +12,10 @@ using PeopleActz.Infrastructure.Context;
 namespace PeopleActz.Infrastructure.Migrations
 {
     [DbContext(typeof(PeopleActzDbContext))]
-    partial class PeopleActzDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220912214354_mig3")]
+    partial class mig3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,15 +53,15 @@ namespace PeopleActz.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "2bbc3d45-4752-4559-98fb-f8a0a9369bd7",
-                            ConcurrencyStamp = "bacffa5f-c369-4d89-9ecf-6b945932131e",
+                            Id = "00fff215-332e-4fc6-98eb-8bd2ecd62fea",
+                            ConcurrencyStamp = "7f31dc5c-f40f-43fb-bb85-ded39b999480",
                             Name = "AppUser",
                             NormalizedName = "APPUSER"
                         },
                         new
                         {
-                            Id = "38be527d-1e93-47ea-a23c-e9cdfd75788e",
-                            ConcurrencyStamp = "e31274df-f1a7-4c81-98f9-813335c7fe87",
+                            Id = "ed66074f-0feb-4fa3-baa5-44be72d0bd2b",
+                            ConcurrencyStamp = "346290d1-3b4e-4921-a922-48a236c42e55",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         });
@@ -268,7 +270,7 @@ namespace PeopleActz.Infrastructure.Migrations
 
                     b.HasIndex("PostId");
 
-                    b.ToTable("Comments");
+                    b.ToTable("Comment");
                 });
 
             modelBuilder.Entity("PeopleActz.Domain.Entities.Models.Post", b =>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PeopleActz.Application.DTOs.Responses.Post;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,7 @@ namespace PeopleActz.Application.DTOs.Responses.AppUser
         public string Id { get; set; }
         public string UserName { get; set; }
         public string Email { get; set; }
-        
+      
+
     }
 }

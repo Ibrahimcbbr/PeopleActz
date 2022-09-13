@@ -7,16 +7,30 @@ using PeopleActz.Application.Implementation.ServiceManagers;
 using PeopleActz.Application.Interfaces.HelperServices;
 using PeopleActz.Application.Interfaces.Services;
 using PeopleActz.Infrastructure.Context;
+using PeopleActz.Infrastructure.UnitOfWork;
+using System.Text.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.ConfigureIdentity();
+builder.Services.ConfigureCors();
+builder.Services
+    .AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.DictionaryKeyPolicy = JsonNamingPolicy.CamelCase;
+        options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
+      
+    });
 // Register the Mapping Profiles
 builder.Services.AddAutoMapper(typeof(Maps).Assembly);
 builder.Services.AddTransient<IJwtTokenService, JwtTokenService>();
 builder.Services.AddTransient<IAccountService, AccountService>();
 builder.Services.AddTransient<IUserService, UserService>();
+builder.Services.AddTransient<IPostService, PostService>();
+builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
+builder.Services.AddTransient<ICommentService, CommentService>();
 builder.Services.AddAuthentication();
 var settings = new JwtSettings();
 builder.Configuration.GetSection("Jwt").Bind(settings);

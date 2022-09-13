@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PeopleActz.Infrastructure.Context;
 
@@ -11,9 +12,10 @@ using PeopleActz.Infrastructure.Context;
 namespace PeopleActz.Infrastructure.Migrations
 {
     [DbContext(typeof(PeopleActzDbContext))]
-    partial class PeopleActzDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220912123109_Initial")]
+    partial class Initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,15 +53,15 @@ namespace PeopleActz.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "2bbc3d45-4752-4559-98fb-f8a0a9369bd7",
-                            ConcurrencyStamp = "bacffa5f-c369-4d89-9ecf-6b945932131e",
+                            Id = "83ba1a65-940f-4fc8-ad9d-8f087c378cce",
+                            ConcurrencyStamp = "6eac2761-41b3-48f9-827d-76dc31ff6c85",
                             Name = "AppUser",
                             NormalizedName = "APPUSER"
                         },
                         new
                         {
-                            Id = "38be527d-1e93-47ea-a23c-e9cdfd75788e",
-                            ConcurrencyStamp = "e31274df-f1a7-4c81-98f9-813335c7fe87",
+                            Id = "eda2d16e-ecba-47e3-a83d-5a3cbf3aa734",
+                            ConcurrencyStamp = "0372f95f-70b6-4012-a8a0-912d79bcf4e6",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         });
@@ -241,36 +243,6 @@ namespace PeopleActz.Infrastructure.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("PeopleActz.Domain.Entities.Models.Comment", b =>
-                {
-                    b.Property<string>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("AppUserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Body")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PostId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AppUserId");
-
-                    b.HasIndex("PostId");
-
-                    b.ToTable("Comments");
-                });
-
             modelBuilder.Entity("PeopleActz.Domain.Entities.Models.Post", b =>
                 {
                     b.Property<string>("Id")
@@ -356,31 +328,6 @@ namespace PeopleActz.Infrastructure.Migrations
                         .HasForeignKey("PostId");
 
                     b.Navigation("Post");
-                });
-
-            modelBuilder.Entity("PeopleActz.Domain.Entities.Models.Comment", b =>
-                {
-                    b.HasOne("PeopleActz.Domain.Entities.Models.AppUser", null)
-                        .WithMany("Comments")
-                        .HasForeignKey("AppUserId");
-
-                    b.HasOne("PeopleActz.Domain.Entities.Models.Post", "Post")
-                        .WithMany("Comments")
-                        .HasForeignKey("PostId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Post");
-                });
-
-            modelBuilder.Entity("PeopleActz.Domain.Entities.Models.AppUser", b =>
-                {
-                    b.Navigation("Comments");
-                });
-
-            modelBuilder.Entity("PeopleActz.Domain.Entities.Models.Post", b =>
-                {
-                    b.Navigation("Comments");
                 });
 #pragma warning restore 612, 618
         }

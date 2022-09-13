@@ -30,7 +30,8 @@ namespace PeopleActz.Infrastructure.Migrations
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Body = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Body = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -63,7 +64,7 @@ namespace PeopleActz.Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    PostId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    PostId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -86,8 +87,7 @@ namespace PeopleActz.Infrastructure.Migrations
                         name: "FK_AspNetUsers_Posts_PostId",
                         column: x => x.PostId,
                         principalTable: "Posts",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -178,12 +178,12 @@ namespace PeopleActz.Infrastructure.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "970eb166-8e4b-4052-a71d-51542d32e718", "30082872-4ff4-463b-8aaa-0d984e50272f", "AppUser", "APPUSER" });
+                values: new object[] { "83ba1a65-940f-4fc8-ad9d-8f087c378cce", "6eac2761-41b3-48f9-827d-76dc31ff6c85", "AppUser", "APPUSER" });
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "e476b24d-cf84-481d-bfba-6129a6d77b2b", "3155a72b-e1b7-4d55-a24b-f5616c572785", "Administrator", "ADMINISTRATOR" });
+                values: new object[] { "eda2d16e-ecba-47e3-a83d-5a3cbf3aa734", "0372f95f-70b6-4012-a8a0-912d79bcf4e6", "Administrator", "ADMINISTRATOR" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

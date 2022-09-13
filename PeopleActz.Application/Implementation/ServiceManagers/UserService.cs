@@ -34,7 +34,7 @@ namespace PeopleActz.Application.Implementation.ServiceManagers
             return new Result<IEnumerable<UserResponse>>
             {
                 IsSuccessful = true,
-                Payload = _mapper.Map<UserResponse>(payload)
+                Payload = _mapper.Map<IEnumerable<UserResponse>>(payload)
             };
         }
 

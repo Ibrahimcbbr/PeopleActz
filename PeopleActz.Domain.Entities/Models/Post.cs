@@ -17,5 +17,6 @@ namespace PeopleActz.Domain.Entities.Models
         public string Id { get; set; }
 
         public IEnumerable<Comment> Comments { get; set; }
+     
     }
 }

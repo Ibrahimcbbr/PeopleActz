@@ -5,27 +5,27 @@ VisualStudioVersion = 17.3.32819.101
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{241C4499-14C6-4DC6-A53A-9F4835A72F61}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PeopleActz.Domain.Entities", "PeopleActz.Domain.Entities\PeopleActz.Domain.Entities.csproj", "{4E1044A7-5E7E-4BB1-A7C1-4750D906D2AC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PeopleActz.Domain.Entities", "PeopleActz.Domain.Entities\PeopleActz.Domain.Entities.csproj", "{4E1044A7-5E7E-4BB1-A7C1-4750D906D2AC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{D596F71A-B1F6-448C-8CDD-D670DDBA31B2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PeopleActz.Infrastructure.Utils", "PeopleActz.Infrastructure.Utils\PeopleActz.Infrastructure.Utils.csproj", "{46CE2D0A-F549-449F-AC6B-0A3A51D1677B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PeopleActz.Infrastructure.Utils", "PeopleActz.Infrastructure.Utils\PeopleActz.Infrastructure.Utils.csproj", "{46CE2D0A-F549-449F-AC6B-0A3A51D1677B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PeopleActz.Infrastructure", "PeopleActz.Infrastructure\PeopleActz.Infrastructure.csproj", "{45823D3D-68BD-4B92-9E4E-74F70757423C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PeopleActz.Infrastructure", "PeopleActz.Infrastructure\PeopleActz.Infrastructure.csproj", "{45823D3D-68BD-4B92-9E4E-74F70757423C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{4D839E1B-7F3F-4F46-86F6-4FD2B37FC9D0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PeopleActz.API", "PeopleActz.API\PeopleActz.API.csproj", "{599CEC8C-1F69-4098-BDC0-4F2A3C34046E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PeopleActz.API", "PeopleActz.API\PeopleActz.API.csproj", "{599CEC8C-1F69-4098-BDC0-4F2A3C34046E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{AF619DEF-5311-4234-A4C7-D55C6811E16F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PeopleActz.Application.Helpers", "PeopleActz.Application.Helpers\PeopleActz.Application.Helpers.csproj", "{0C1E22AF-CED4-4677-9197-E7C119114F84}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PeopleActz.Application.Helpers", "PeopleActz.Application.Helpers\PeopleActz.Application.Helpers.csproj", "{0C1E22AF-CED4-4677-9197-E7C119114F84}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PeopleActz.Application.Interfaces", "PeopleActz.Application.Interfaces\PeopleActz.Application.Interfaces.csproj", "{4142C5B0-7145-45CC-83A4-B85C4C00A197}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PeopleActz.Application.Interfaces", "PeopleActz.Application.Interfaces\PeopleActz.Application.Interfaces.csproj", "{4142C5B0-7145-45CC-83A4-B85C4C00A197}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PeopleActz.Application", "PeopleActz.Application\PeopleActz.Application.csproj", "{5FBE7097-3364-4755-B71E-9F0055FAC901}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PeopleActz.Application", "PeopleActz.Application\PeopleActz.Application.csproj", "{5FBE7097-3364-4755-B71E-9F0055FAC901}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PeopleActz.Application.DTOs", "PeopleActz.Application.DTOs\PeopleActz.Application.DTOs.csproj", "{8EF803C3-4CB1-449F-B791-2DB3E0FCE06C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PeopleActz.Application.DTOs", "PeopleActz.Application.DTOs\PeopleActz.Application.DTOs.csproj", "{8EF803C3-4CB1-449F-B791-2DB3E0FCE06C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

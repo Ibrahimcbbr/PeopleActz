@@ -100,6 +100,33 @@ namespace PeopleActz.Application.Implementation.ServiceManagers
             };
         }
 
+        public async Task<Result<List<CommentDetailsListResponse>>> GetAllCommentsByUserId(string userId)
+        {
+            var user = await _userService.GetById(userId);
+            if (user is null)
+            {
+                return new Result<List<CommentDetailsListResponse>>
+                {
+                    Info = "there is no user whit this id in the system",
+                    StatusCode = StatusCodes.Status204NoContent,
+                    IsSuccessful = false
+                };
+            }
+
+            
+
+            var commentsByUserId = await _uow.Comment.GetAllCommentsByPostId(userId);
+            var payload = _mapper.Map<List<CommentDetailsListResponse>>(commentsByUserId);
+            
+            return new Result<List<CommentDetailsListResponse>>
+            {
+                Info="Operation done",
+                IsSuccessful=true,
+                StatusCode = StatusCodes.Status200OK,
+                Payload = payload
+            };
+        }
+
         public async Task<Result<CommentDetailResponse>> GetCommentById(string id)
         {
             var comment = await GetComment(id);
@@ -162,10 +189,6 @@ namespace PeopleActz.Application.Implementation.ServiceManagers
 
 
         }
-
-      
-        
-
 
         private async Task<Comment> GetComment(string id)
         {

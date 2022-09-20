@@ -27,6 +27,15 @@ namespace PeopleActz.Infrastructure.Repositories
           return commentByPostId;
         }
 
+        public async Task<List<Comment>> GetAllCommentsByUserId(string userId)
+        {
+            var commentByUserId = await _context.Comments
+                  .Include(x => x.Post)
+                  .OrderBy(x => x.UserId == userId)
+                  .ToListAsync();
+            return commentByUserId;
+        }
+
         public async Task<Comment> GetCommentById(string id)
         {
             var comment = await Get(x => x.Id == id);

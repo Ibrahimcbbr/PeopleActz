@@ -11,5 +11,6 @@ namespace PeopleActz.Infrastructure.Utils.Interfaces.Repositories
     {
         Task<Comment> GetCommentById(string id);
         Task<List<Comment>> GetAllCommentsByPostId(string id);
+        Task<List<Comment>> GetAllCommentsByUserId(string userId);
     }
 }

@@ -14,6 +14,7 @@ namespace PeopleActz.Application.Interfaces.Services
         Task<Result<NoContentResponse>> CreateComment(CommentCreateRequest request);
         Task<Result<CommentDetailResponse>>GetCommentById(string id);
         Task<Result<NoContentResponse>> UpdateComment(CommentUpdateRequest request);
-        Task<Result<List<CommentDetailsListResponse>>> GetAllCommentsByPostId(string postId );    
+        Task<Result<List<CommentDetailsListResponse>>> GetAllCommentsByPostId(string postId);   
+        Task<Result<List<CommentDetailsListResponse>>> GetAllCommentsByUserId(string userId);
     }
 }

@@ -12,8 +12,8 @@ using PeopleActz.Infrastructure.Context;
 namespace PeopleActz.Infrastructure.Migrations
 {
     [DbContext(typeof(PeopleActzDbContext))]
-    [Migration("20220912212742_mig1")]
-    partial class mig1
+    [Migration("20220913174710_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -53,15 +53,15 @@ namespace PeopleActz.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "a0da8619-da2a-4bfe-8733-0b03a1f28d55",
-                            ConcurrencyStamp = "489e846d-eb84-443a-b6d6-55270ea99cf8",
+                            Id = "fdb97f47-413f-4e22-83b9-c6e27bec30a1",
+                            ConcurrencyStamp = "92f68fca-3043-4aa5-9d8b-f4a7ab6600bf",
                             Name = "AppUser",
                             NormalizedName = "APPUSER"
                         },
                         new
                         {
-                            Id = "af185661-a42a-4d6f-b3c1-b79e6259d60f",
-                            ConcurrencyStamp = "0fab7f25-debb-4c91-86ce-053051d6ddad",
+                            Id = "b617a37e-b4c6-4b4b-9a15-64e9b3fda9b6",
+                            ConcurrencyStamp = "65ce35c1-166b-4a8c-951a-64baa52f9bbd",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         });
@@ -246,6 +246,10 @@ namespace PeopleActz.Infrastructure.Migrations
             modelBuilder.Entity("PeopleActz.Domain.Entities.Models.Comment", b =>
                 {
                     b.Property<string>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("AppUserId")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Body")
@@ -258,15 +262,15 @@ namespace PeopleActz.Infrastructure.Migrations
 
                     b.Property<string>("UserId")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("AppUserId");
+
                     b.HasIndex("PostId");
 
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Comment");
+                    b.ToTable("Comments");
                 });
 
             modelBuilder.Entity("PeopleActz.Domain.Entities.Models.Post", b =>
@@ -358,21 +362,17 @@ namespace PeopleActz.Infrastructure.Migrations
 
             modelBuilder.Entity("PeopleActz.Domain.Entities.Models.Comment", b =>
                 {
+                    b.HasOne("PeopleActz.Domain.Entities.Models.AppUser", null)
+                        .WithMany("Comments")
+                        .HasForeignKey("AppUserId");
+
                     b.HasOne("PeopleActz.Domain.Entities.Models.Post", "Post")
                         .WithMany("Comments")
                         .HasForeignKey("PostId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("PeopleActz.Domain.Entities.Models.AppUser", "User")
-                        .WithMany("Comments")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Post");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("PeopleActz.Domain.Entities.Models.AppUser", b =>

@@ -51,15 +51,15 @@ namespace PeopleActz.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "2bbc3d45-4752-4559-98fb-f8a0a9369bd7",
-                            ConcurrencyStamp = "bacffa5f-c369-4d89-9ecf-6b945932131e",
+                            Id = "fdb97f47-413f-4e22-83b9-c6e27bec30a1",
+                            ConcurrencyStamp = "92f68fca-3043-4aa5-9d8b-f4a7ab6600bf",
                             Name = "AppUser",
                             NormalizedName = "APPUSER"
                         },
                         new
                         {
-                            Id = "38be527d-1e93-47ea-a23c-e9cdfd75788e",
-                            ConcurrencyStamp = "e31274df-f1a7-4c81-98f9-813335c7fe87",
+                            Id = "b617a37e-b4c6-4b4b-9a15-64e9b3fda9b6",
+                            ConcurrencyStamp = "65ce35c1-166b-4a8c-951a-64baa52f9bbd",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         });

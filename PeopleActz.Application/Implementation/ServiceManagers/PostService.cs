@@ -44,8 +44,6 @@ namespace PeopleActz.Application.Implementation.ServiceManagers
             };      
         }
 
-      
-
         public async Task<Result<NoContentResponse>> RemovePost(string id)
         {
             var post = await GetPost(id);

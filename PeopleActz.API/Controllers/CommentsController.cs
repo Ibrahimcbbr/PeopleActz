@@ -40,5 +40,10 @@ namespace PeopleActz.API.Controllers
         {
             return await _commentService.GetAllCommentsByPostId(postId);
         }
+        [HttpGet("GetCommentsByUserId")]
+        public async Task<Result<List<CommentDetailsListResponse>>> GetCommentByUserId(string userId)
+        {
+            return await _commentService.GetAllCommentsByUserId(userId);
+        }
     }
 }
